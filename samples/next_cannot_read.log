@@ -1,0 +1,9 @@
+▲ Next.js 15.1.0
+   Collecting page data ...
+Error occurred prerendering page "/dashboard". Read more: https://nextjs.org/docs/messages/prerender-error
+TypeError: Cannot read properties of undefined (reading 'map')
+    at Dashboard (/vercel/path0/.next/server/app/dashboard/page.js:1:2456)
+    at src/app/dashboard/page.tsx:18:22
+Export encountered errors on following paths:
+	/dashboard/page: /dashboard
+ ELIFECYCLE  Command failed with exit code 1.

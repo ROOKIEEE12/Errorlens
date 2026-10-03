@@ -1,0 +1,7 @@
+#8 [4/6] COPY package.json package-lock.json ./
+#8 ERROR: failed to calculate checksum of ref 6f2d1c0a::x1y2z3: "/package-lock.json": not found
+------
+ > [4/6] COPY package.json package-lock.json ./:
+------
+Dockerfile:6
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 6f2d1c0a::x1y2z3: "/package-lock.json": not found

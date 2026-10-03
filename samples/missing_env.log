@@ -1,0 +1,9 @@
+▲ Vercel build
+Next.js 15.1.0
+Collecting page data ...
+Error: Missing environment variable: DATABASE_URL
+    at src/lib/db.ts:12:11
+DATABASE_URL=postgresql://admin:hunter2pass@db.example.com/prod
+NEXTAUTH_SECRET=abcd1234efgh5678
+ELIFECYCLE Command failed with exit code 1
+npm run build exited with 1

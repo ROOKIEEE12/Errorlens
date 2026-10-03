@@ -1,0 +1,6 @@
+##[group]Run actions/checkout@v4
+##[endgroup]
+##[group]Run aws-actions/configure-aws-credentials@v4
+##[error]Input required and not supplied: aws-region
+Error: Input required and not supplied: aws-region
+##[error]Process completed with exit code 1.

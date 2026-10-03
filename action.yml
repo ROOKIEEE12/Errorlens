@@ -1,0 +1,39 @@
+name: ErrorLens failure analysis
+description: Find the root cause of a failed workflow run, with secrets redacted.
+inputs:
+  run-id:
+    description: Workflow run to analyze (defaults to the triggering run)
+    required: false
+  post-comment:
+    description: Post the diagnosis as a PR comment
+    default: "false"
+  github-token:
+    description: Token with actions:read (and pull-requests:write for comments)
+    default: ${{ github.token }}
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with: { python-version: "3.12" }
+    - name: Install ErrorLens
+      shell: bash
+      run: pip install --quiet "$GITHUB_ACTION_PATH"
+    - name: Collect failed-step logs only
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+        RUN_ID: ${{ inputs.run-id || github.event.workflow_run.id || github.run_id }}
+      run: gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --log-failed > "$RUNNER_TEMP/failed.log" || true
+    - name: Analyze (redaction happens before anything else)
+      shell: bash
+      run: |
+        errorlens report "$RUNNER_TEMP/failed.log" --format github --output "$RUNNER_TEMP/comment.md"
+        cat "$RUNNER_TEMP/comment.md" >> "$GITHUB_STEP_SUMMARY"
+    - name: Comment on PR
+      if: ${{ inputs.post-comment == 'true' }}
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+        PR: ${{ github.event.workflow_run.pull_requests[0].number || github.event.pull_request.number }}
+      run: |
+        if [ -n "$PR" ]; then gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/comment.md"; fi

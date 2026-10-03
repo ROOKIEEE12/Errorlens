@@ -1,0 +1,7 @@
+> app@0.1.0 build
+> node scripts/build-data.js
+node:internal/fs/utils:356
+Error: ENOENT: no such file or directory, open '/vercel/path0/data/products.json'
+    at Object.openSync (node:fs:603:3)
+    at scripts/build-data.js:9:18
+npm ERR! code 1

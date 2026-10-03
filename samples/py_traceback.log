@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/runner/work/app/app/main.py", line 4, in <module>
+    from services.billing import charge
+  File "/home/runner/work/app/app/services/billing.py", line 2, in <module>
+    import stripe
+ModuleNotFoundError: No module named 'stripe'
+Error: Process completed with exit code 1.

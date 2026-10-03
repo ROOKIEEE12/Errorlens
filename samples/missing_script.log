@@ -1,0 +1,5 @@
+npm ERR! Missing script: "build"
+npm ERR!
+npm ERR! To see a list of scripts, run:
+npm ERR!   npm run
+Error: Command "npm run build" exited with 1

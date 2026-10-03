@@ -1,0 +1,13 @@
+[12:01:03.221] Running build in Washington, D.C., USA (East) – iad1
+[12:01:04.002] Cloning github.com/acme/app (Branch: main, Commit: 3fa91c2)
+[12:01:20.118] Installing dependencies...
+[12:01:21.550] pnpm install --frozen-lockfile
+[12:01:40.003] ▲ Next.js 15.1.0
+[12:01:48.771] Failed to compile.
+[12:01:48.771]
+[12:01:48.772] ./src/app/page.tsx:3:1
+[12:01:48.772] Module not found: Can't resolve '@/component/Header'
+[12:01:48.772]
+[12:01:48.801] > Build failed because of webpack errors
+[12:01:48.855]  ELIFECYCLE  Command failed with exit code 1.
+[12:01:48.900] Error: Command "pnpm run build" exited with 1
